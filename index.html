@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Web audio API/WebGL Visualiser : Dieter Van Hertbruggen </title>
+<link href="http://fonts.googleapis.com/css?family=Raleway:200,300" rel="stylesheet" type="text/css" />
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+<body>
+  <!-- opvragen muziek bestand-->
+  <input id="filechoosen" type="file" accept="audio/*" onchange="enableplaysound()">
+  <button id="playsound" onclick="playSound()" disabled>Start Muziek </button>
+  <button id="stopsound" onclick="stopSound()" disabled>Stop Muziek </button>
+  <br>
+  <!--opvragen kleuren-->
+  <input type="radio" id="random" name="colselect" value="random" checked onclick="favcolorChangeRandom()"/>Random
+  <input type="radio" id="fixed" name="colselect" value="fixed" onclick="favcolorChange()" />Fixed
+  <input type="color" id="favcolor" value="#ff0000" oninput="favcolorChange()">
+  <!--opvragen aantal rijen en kolommen-->
+   <table>
+        <tr>
+            <!-- opvragen aantal rijen-->
+            <td >Aantal rijen </td>
+            <td>0</td>
+            <td> <input type="range" min="0" max= "10"  value="5" id="rows"  onclick="rowChange(this.value)" /></td>
+            <td>10</td>
+            <td>  <span id="rowValue" value=rows.value></span> </td>
+        </tr>
+        <tr>
+          <!-- opvragen aantal kolommen-->
+            <td>aantal kolommen</td>
+            <td>0</td>
+            <td> <input type="range" min="0" max="10" value="5" id="columns" onclick="colChange(this.value)" /></td>
+            <td>10</td>
+            <td>   <span id="columnValue" value=column.value></span> </td>
+        </tr>
+
+        <tr>
+            <!-- scaling-->
+            <td >x-y</td>
+            <td>0</td>
+            <td> <input type="range" min="0" max= "10"  value="5" id="scalexy"  onclick="scalexychange(this.value)" /></td>
+            <td>10 </td>
+            <td>  <span id="scalexylabel" value=scalexy.value></span> </td>
+        </tr>
+        <tr>
+          <!-- opvragen aantal kolommen-->
+            <td>z</td>
+            <td>0</td>
+            <td> <input type="range" min="0" max="10" value="5" id="scalez" onclick="scalezchange(this.value)" /></td>
+            <td>10</td>
+            <td>   <span id="scalezlabel" value=scalez.value ></span> </td>
+        </tr>
+        <tr>
+          <!-- rotation speed-->
+            <td>Rotation Speed</td>
+            <td>-5</td>
+            <td> <input type="range" min="-5" max="5" value="2" id="rotationspeed" onclick="rotationspeedchange(this.value)" /></td>
+            <td>5</td>
+            <td>   <span id="rotationspeedlabel" value=rotationspeed.value ></span> </td>
+        </tr>
+</table>
+<!--opvragen capturing-->
+<button id="startcapturing" onclick="startRecording()"/>Start Recording </button>
+<button id="stopcapturing" disabled onclick="stopRecording()"/>Stop Recording </button>
+
+<!--opvragen scripts-->
+<script type="text/javascript" src="js/CCapture.all.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="js/three.min.js"></script>
+<script type="text/javascript" src="js/OrbitControls.js"></script>
+<script type="text/javascript" src="js/visualizer.js"></script>
+<script type="text/javascript" src="js/audio_V2.js"></script>
+
+
+</body>
+</html>
